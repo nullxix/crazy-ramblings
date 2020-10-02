@@ -29,6 +29,14 @@ function App() {
       }))
   }
 
+  function deleteCard(index){
+    setCards(prevState => {
+      let newState = [...prevState]
+      newState.splice(index, 1)
+
+      return newState
+    })
+  }
   async function handleSubmit(){
     await setCards(prevState => [
       ...prevState,
@@ -41,7 +49,12 @@ function App() {
     <div className="app">
       <Form {...newCard} handleChange={handleNewCardChange}/>
       <button onClick={handleSubmit}>New Card!</button>
-      {cards.map((card, i) => <Card {...card} handleChange={event => handleChange(event, i)}/>)}
+      {cards.map((card, i) => 
+        <Card {...card} 
+          handleChange={event => handleChange(event, i)} 
+          handleDelete={() => deleteCard(i)}
+        />
+      )}
     </div>
   );
 }
