@@ -41,7 +41,7 @@ function App() {
     <div className="app">
       <Form {...newCard} handleChange={handleNewCardChange}/>
       <button onClick={handleSubmit}>New Card!</button>
-      {cards.map((card, i) => <Card {...card} handleChange={event => handleChange(e, i)}/>)}
+      {cards.map((card, i) => <Card {...card} handleChange={event => handleChange(event, i)}/>)}
     </div>
   );
 }
